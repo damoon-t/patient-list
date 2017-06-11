@@ -51,10 +51,25 @@ int List::getElementCountCat(int i)
 	return elementCountCat[i];
 }
 
-//List::insert(const Patient& toBeRemoved)
-//{
+bool insert(const Patient& newElement) // not sorted
+{	// this is probably wrong, but assuming it works, read the rest of the logic 
+	int col = newElement.getCareCard()[0]; // I don't know how to find the first character of the carecard!!
+	int x = elementCountCat[col];	
+	int y = capacity[col];
+	if ( x == y-1)  //if we reach the last empty space allocate memory
+	{ 
+		capacity[col] = 2* y;
+		elements[i]= new Patient [capacity[col]]; // increase the capacity and allocate double the current memory
+	}
+	if( x < capacity[col]) // I know this is redundant 
+	{
+		elements[col][x] = Patient& newElement; //not sorted, place it at the end
 
-//}
+		return true; 
+	}
+
+	return false; 
+}
 
 
 
