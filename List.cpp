@@ -11,11 +11,6 @@
 
 using namespace std;
 
-
-
-
-
-
 List::List()
 {
 
@@ -39,6 +34,7 @@ List::~List()
 		{
 			delete[] elements[i]; //it seems that this the only one that needs delete, the rest will be deallocated by default
 		}
+	delete[] elements; // I don't know if this is needed or not, actually this causes a warning
 }
 
 
@@ -51,28 +47,30 @@ int List::getElementCountCat(int i)
 	return elementCountCat[i];
 }
 
-bool insert(const Patient& newElement) // not sorted
+bool List::insert(const Patient& newElement) // not sorted
 {	// this is probably wrong, but assuming it works, read the rest of the logic 
 	int col = newElement.getCareCard()[0]; // I don't know how to find the first character of the carecard!!
+	
 	int x = elementCountCat[col];	
 	int y = capacity[col];
 	if ( x == y-1)  //if we reach the last empty space allocate memory
 	{ 
 		capacity[col] = 2* y;
-		elements[i]= new Patient [capacity[col]]; // increase the capacity and allocate double the current memory
+		elements[col]= new Patient [capacity[col]]; // increase the capacity and allocate double the current memory
 	}
 	if( x < capacity[col]) // I know this is redundant 
 	{
-		elements[col][x] = Patient& newElement; //not sorted, place it at the end
+		elements[col][x] = newElement; //not sorted, place it at the end
 
+		elementCount++;
+		elementCountCat[col]++;
 		return true; 
 	}
 
 	return false; 
 }
 
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int main()
 {
@@ -84,4 +82,3 @@ int main()
 }
 	return 0;
 }
-
