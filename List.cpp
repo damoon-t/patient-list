@@ -11,6 +11,11 @@
 
 using namespace std;
 
+
+
+
+
+
 List::List()
 {
 
@@ -70,7 +75,24 @@ bool List::insert(const Patient& newElement) // not sorted
 	return false; 
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/* to be Done by Sunday night
+	// Description: Remove an element. 
+	//              If the removal is successful, true is returned otherwise, false is returned.
+	// Postcondition: toBeRemoved is removed, the appropriate elementCount has been decremented.	
+	bool Lis::remove( const Patient& toBeRemoved );
+	
+	// Description: Remove all elements.
+	void Lis::removeAll();
+   
+	// Description: Search for target element and returns a pointer to it if found,
+	//              otherwise, returns NULL.
+	Patient* Lis::search(const Patient& target);
+   
+	// Description: Prints all n elements stored in List in sort order and does so in O(n).
+	void Lis::printList();
+*/
+
+
 
 int main()
 {
@@ -82,3 +104,4 @@ int main()
 }
 	return 0;
 }
+
