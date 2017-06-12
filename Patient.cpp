@@ -81,29 +81,43 @@ void Patient::setEmail(const string anEmail)
 
 bool Patient::operator==(const Patient &rhs) // probably requires a for loop
 {
-    if (careCard == rhs.getCareCard() )
+    if(careCard == rhs.getCareCard())
         return true;
     else
         return false;
-}
 
-bool Patient::operator>(const Patient& rhs)
-{
-    for (int i=0; i<10; i++)
+ /*   for (int i=0; i<10; i++)
     {
-        if(careCard[i] > rhs.careCard[i])
+        if(careCard[i] == rhs.getcareCard()[i] ) 
         {
             return true;
         }
         else //if (careCard[i] < rhs.careCard[i]) // this was a mistake, it excludes equal carecards
         {
             return false;
-        }
-        /*else if (i ==9 && careCard[i] == rhs.careCard[i])
+        }*/
+}
+
+bool Patient::operator>(const Patient &rhs)
+{
+    if ( careCard > rhs.getCareCard())
+        return true;
+    else
+        return false;
+
+
+/*    for (int i=0; i<10; i++)
+    {
+        if(careCard()[i] > rhs.getcareCard()[i] ) 
         {
             return true;
-        }*/
-    }
+        }
+        else 
+        {
+            return false;
+        }
+
+    }*/
 
 }
 

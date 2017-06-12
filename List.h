@@ -24,14 +24,16 @@ class List  {
 private:	
 
 // We must complete this section
-	static const int MAX_ELEMENTS = 3;
+	static const int MAX_ELEMENTS =3;
 	int capacity[10]; //setting the capacity for each category of carecard to 10. 
 	int elementCountCat[10]; //this way, we can keep track of each category of carecards(0-9 first digit) 
 	Patient* elements[10];
 
-	int elementCount;
+//	int elementCount;
 
-   
+
+   int getCol(const Patient& newElement);
+
 public:
 
 // We must add at least 1 constructor and a destructor
