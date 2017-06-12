@@ -31,7 +31,6 @@ private:
 
 	int elementCount;
 
-
    
 public:
 
@@ -47,7 +46,7 @@ public:
 	~List();
 
 	// returns the element count for the category of carecards that start with 'i'
-	int getElementCountCat(int i);
+	//int getElementCountCat(int i);
 
 // *** Start of Public Interface ***
 // Note: Public Interface must not be modified.
