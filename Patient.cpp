@@ -9,7 +9,7 @@ using namespace std;
 Patient::Patient ()
 {
     careCard = "0000000000";
-    name = "To be entered";
+    name = "To be entered default";
     address = "To be entered";
     phone = "To be entered";
     email = "To be entered";
@@ -19,7 +19,7 @@ Patient::Patient ()
 Patient::Patient(string aCareCard)
 {  
     careCard = aCareCard;
-    name = "To be entered";
+    name = "To be entered not default";
     address = "To be entered";
     phone = "To be entered";
     email = "To be entered";
