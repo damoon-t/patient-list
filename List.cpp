@@ -82,6 +82,11 @@ bool List::insert(const Patient& newElement) // not sorted
 		int index =0;
 		while (index < colCount && !(elements[col][index] > newElement)) // I am not checking if the carecard is duplicate
 			{
+				if(elements[col][index] == newElement)
+				{
+					cout << endl << "a patient with the same care card number already exist in the list." << endl;
+					return false;
+				}
 				index++;
 			}
 					
@@ -131,10 +136,10 @@ bool List::insert(const Patient& newElement) // not sorted
     
     	for(int i=0; i<10; i++)
 		{
-			delete[] elements[i];
-			elements[i]=NULL;
+		//	delete[] elements[i];
+		//	elements[i]=NULL;
 			elementCountCat[i]=0;
-			capacity[i]=0;
+			capacity[i]=MAX_ELEMENTS;
 		}
 	}
    
