@@ -29,9 +29,9 @@ private:
 	int elementCountCat[10]; //this way, we can keep track of each category of carecards(0-9 first digit) 
 	Patient* elements[10];
 
-//	int elementCount;
-
-
+// finds the column or category of the carecard, also called section
+// precondition: gets a Patient
+// postcondition; returns the first digit of the carecard string.  
    int getCol(const Patient& newElement);
 
 public:
@@ -42,13 +42,11 @@ public:
 	List();
 
 	// "manual" constructor, makes a copy of the given list
-	List(const List&);
+	//List(const List&);
 
 	// Default destructor
 	~List();
 
-	// returns the element count for the category of carecards that start with 'i'
-	//int getElementCountCat(int i);
 
 // *** Start of Public Interface ***
 // Note: Public Interface must not be modified.

@@ -74,7 +74,7 @@ public:
 	bool operator>(const Patient & rhs);
 	
 	// Description: Prints the content of "this" patient.
-	void printPatient( );
+	void printPatient();
 
 };
 // end of Patient.h

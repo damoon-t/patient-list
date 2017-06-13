@@ -6,7 +6,6 @@
 #include <stdio.h>
 
 // for testing purposes 
-#include "Patient.cpp"
 //.....................
 
 using namespace std;
@@ -14,7 +13,6 @@ using namespace std;
 
 List::List()
 {
-	//elementCount = 0;
 	for (int i=0; i<10; i++)
 	{
 		elements[i]= new Patient [MAX_ELEMENTS]; //we randomely chose to make an initial size of 1 for the start
@@ -31,7 +29,7 @@ int List::getCol(const Patient& newElement)
 }
 
 //
-	int  List::getElementCount() const
+int  List::getElementCount() const
 {	
 	int elementCount=0;
 	for(int i=0; i<10; i++)
@@ -81,16 +79,15 @@ bool List::insert(const Patient& newElement) // not sorted
 	}
 	if(colCount < capacity[col]) // I know this is could be redundant 
 	{
-		int i =0;
-		while (i < colCount && !(elements[col][i] > newElement))
+		int index =0;
+		while (index < colCount && !(elements[col][index] > newElement)) // I am not checking if the carecard is duplicate
 			{
-				i++;
+				index++;
 			}
-		int index = i;
 					
 		for (int k = colCount; k > index; k--) //Not a nested for loop, this moves everything forward
         {
-            elements[col][k] = elements[col][k - 1];
+            elements[col][k] = elements[col][k-1];
         }
 		
 		elements[col][index] = newElement; //not sorted, places it at the end
@@ -110,21 +107,24 @@ bool List::insert(const Patient& newElement) // not sorted
 	// Postcondition: toBeRemoved is removed, the appropriate elementCount has been decremented.	
 	bool List::remove( const Patient& toBeRemoved )
 	{
-		int col = getCol(target);
+		int col = getCol(toBeRemoved);
 		int colCount = elementCountCat[col];
+
 		for(int i=0; i<colCount; i++)
 		{
-			if (elements[col][i] == target)
+			if (elements[col][i] == toBeRemoved)
 			{
-				delete elements[col][i];
-
+				for (int k = i; k < colCount-1 ; k++) // Move everything after toBeRemoved one position back
+		        {
+		            elements[col][k] = elements[col][k+1];
+		        }		
+				elementCountCat[col]--;
+				return true; 
 			}
 		}
-
+	return false;
 	}
 
-
-	
 	// Description: Remove all elements.
 	void List::removeAll()
 	{
@@ -136,7 +136,6 @@ bool List::insert(const Patient& newElement) // not sorted
 			elementCountCat[i]=0;
 			capacity[i]=0;
 		}
-		elementCount=0;
 	}
    
 	// Description: Search for target element and returns a pointer to it if found,
@@ -169,72 +168,3 @@ bool List::insert(const Patient& newElement) // not sorted
 		}
 
 	}
-
-
-int main()
-{
-	List sample = List();
-
-/*	for (int i=0; i<10; i++)
-	{
-		int x = sample->elementCountCat[i];
-		int y  = sample.getElementCount();
-		printf("%d %d \n", x, y);
-	}*/
-
-	//samole patients
-	Patient p1234567890("1234567890");
-    Patient p2345678901("2345678901");
-    Patient p3456789012("3456789012");
-    Patient p4567890123("4567890123");
-    Patient p5678901234("5678901234");
-    Patient p5389012384("5389012384");
-    Patient p5489012384("5489012384");
-   
-    Patient abc("0001112223");
-    cout << abc.getCareCard();
-    
-    //testing insert
-    cout << endl;
-    cout << "Add Patient p2345678901 to List";
- 	if(sample.insert(abc))
- 	{
- 		cout << "sample true" << endl;
- 	}
-
-
-    //testing elementCount
-    cout << "\nThere are now " << sample.getElementCount() << " patients in List." << endl;	
-    sample.printList();
-cout << endl;
-//    cout << "Add Patient p2345678901 to List";
-//    sample.insert(p2345678901);
-
-//    cout << "\nThere are now " << sample.getElementCount() << " patients in List." << endl;	
-//    sample.printList();
-
-    cout << endl;
-    cout << "Add Patient p5678901234 to List";
-    sample.insert(p5678901234);
-
-    cout << "\nThere are now " << sample.getElementCount() << " patients in List." << endl;	
-    sample.printList();
-        cout << endl;
-
-          cout << "Add Patient p5389012384 to List";
-    sample.insert(p5389012384);
-
-    cout << "\nThere are now " << sample.getElementCount() << " patients in List." << endl;	
-    sample.printList();
-        cout << endl;
-
-          cout << "Add Patient p5489012384 to List";
-    sample.insert(p5489012384);
-
-    cout << "\nThere are now " << sample.getElementCount() << " patients in List." << endl;	
-    sample.printList();
-        cout << endl;
-
-	return 0;
-}
-

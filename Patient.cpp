@@ -16,23 +16,14 @@ Patient::Patient ()
 }
 
 
-Patient :: Patient(string aCareCard)
-{
-    if (aCareCard.size() != 10 )
-    {
-        careCard = "0000000000";
-    }
-    else
-    {
-        careCard = aCareCard;
-    }
-
+Patient::Patient(string aCareCard)
+{  
+    careCard = aCareCard;
     name = "To be entered";
     address = "To be entered";
     phone = "To be entered";
     email = "To be entered";
 }
-
 
 
 string Patient::getName() const
@@ -124,6 +115,6 @@ bool Patient::operator>(const Patient &rhs)
 
 void Patient::printPatient()
 {
-    cout << careCard << "," << "Patient: " << name << "," << address
-         << "," << phone << "," << email << endl;
+    cout << careCard << ", " << "Patient: " << name << ", " << address
+         << ", " << phone << ", " << email << endl;
 }
