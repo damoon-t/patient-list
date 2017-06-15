@@ -134,7 +134,7 @@ void removePatient(List &listOfPatients)
         result = listOfPatients.remove(toBeRemovedPatient);
     }
 
-    if (result == true)
+    if (result)
     {
         cout << "the patient's profile has been removed successfully from the list of patients." << endl;
     } 
